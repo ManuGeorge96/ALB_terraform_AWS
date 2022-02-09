@@ -61,7 +61,7 @@ This terraform code can be used on any AWS regions.
 
 It has got two main.tf files one in the root folder and other in the ./modules. main.tf in root folder describes about creation of Autoscaling Group, Application Load Balancer with Listner and Listner Rules. ./modules/main.tf describes about the creation of the VPC, subnets, security Groups, Route Table, Internet Gateway, etc.
 
-main.tf
+<b>main.tf</b>
 
 -  SECTION - 1
    -  ```sh
