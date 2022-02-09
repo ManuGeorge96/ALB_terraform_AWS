@@ -1,4 +1,5 @@
 #############################################################################
+#VPC-Creation
 resource "aws_vpc" "vpc" {
   cidr_block = var.cidr_vpc
   enable_dns_hostnames = true
@@ -7,6 +8,7 @@ resource "aws_vpc" "vpc" {
   }
 }
 ###################################################################################
+#Subnet-Creation
 resource "aws_subnet" "public-subnets" {
   cidr_block = cidrsubnet(var.cidr_vpc, var.bits, "${count.index}")
   availability_zone = data.aws_availability_zones.AZs.names[count.index]
@@ -18,6 +20,7 @@ resource "aws_subnet" "public-subnets" {
   }
 }
 ###################################################################################
+#Egress-Rules for EC2 - Instance
 resource "aws_security_group" "Inst-SG" {
   name = "APP-SG"
   description = "app-acces"
@@ -35,6 +38,8 @@ resource "aws_security_group" "Inst-SG" {
   }
 }
 
+#Resource block to add all specified ingress ports for EC2 Instance
+
 resource "aws_security_group_rule" "Inst-SG" {
   for_each = toset(var.ingress_ports)
   type = "ingress"
@@ -45,7 +50,7 @@ resource "aws_security_group_rule" "Inst-SG" {
   ipv6_cidr_blocks = [ "::/0" ]
   security_group_id = aws_security_group.Inst-SG.id
 }
-
+#Security Group for Load-Balancer
 resource "aws_security_group" "allow" {
   name = "Allow-SG"
   description = "allow-all"
@@ -71,6 +76,7 @@ resource "aws_security_group" "allow" {
   }
 }
 ###################################################################################
+#Internet-Gateway Creation
 resource "aws_internet_gateway" "ALB-IGw" {
   vpc_id = aws_vpc.vpc.id
   tags = {
@@ -78,6 +84,7 @@ resource "aws_internet_gateway" "ALB-IGw" {
   }
 }
 ##################################################################################
+#Route table Creation
 resource "aws_route_table" "ALB--Public--RTB" {
   vpc_id = aws_vpc.vpc.id
   route {
@@ -89,6 +96,7 @@ resource "aws_route_table" "ALB--Public--RTB" {
   }
 }
 ###################################################################################
+#Route Table Association
 resource "aws_route_table_association" "ALB--public" {
   count = "${length(aws_subnet.public-subnets.*.cidr_block)}"
   subnet_id = "${element(aws_subnet.public-subnets.*.id, count.index)}"
