@@ -14,7 +14,7 @@ resource "aws_launch_configuration" "Launch-Configuration" {
   name_prefix = "${var.project}-"
   image_id = data.aws_ami.AMI.id
   instance_type = var.type
-  key_name = "Recovery_Instance"
+  key_name = aws_key_pair.ALB-key.key_name
   user_data = file("setup.sh")
   security_groups = [ module.vpc-ALB.security_group_id ]
   lifecycle {
@@ -111,7 +111,14 @@ resource "aws_lb_listener_rule" "main" {
   }
   condition {
     host_header {
-      values = ["webapp.devforfree.tech"]
+      values = ["ENTER-HOST-HEADER-HERE"]
     }
   }
+}
+################################################################################
+#SECTION - 8
+#################################################################################
+resource "aws_key_pair" "ALB-key" {
+  key_name = "for_alb"
+  public_key = file("alb.pub")
 }

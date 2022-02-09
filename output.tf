@@ -1,3 +1,3 @@
-#output "subids" {
-#  value = module.vpc.subids
-#}
+output "Load-Balancer-DNS-Name" {
+  value = aws_lb.ALB.dns_name
+}

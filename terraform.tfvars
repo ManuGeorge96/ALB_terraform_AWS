@@ -1,5 +1,5 @@
 region ="us-east-1"
-access_key = "ENTER-ACCESS-ID"
+access_key = "ENTER-ACCESS-KEY"
 secret_key = "ENTER-SECRET-KEY"
 cidr_vpc = "172.69.0.0/16"
 project = "Application_Load_Balancer"
