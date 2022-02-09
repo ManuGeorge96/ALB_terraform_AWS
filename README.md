@@ -51,6 +51,7 @@ This terraform code can be used on any AWS regions.
    -   <b>max</b> : Maximum number of EC2 Instances that can be launched by Auto Scaling Group.
    -   <b>min</b> : Minimum number of EC2 instances that needs to be under the Auto Scaling Group.
 -  You may also edit provision script <b>setup.sh</b>
+-  Specify Header value on <b>SECTION - 7</b> inside main.tf
 -  ```sh
       terraform init
       terraform apply
