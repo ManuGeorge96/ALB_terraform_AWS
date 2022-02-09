@@ -6,7 +6,6 @@ module "vpc-ALB" {
   ingress_ports = var.in_ports
   bits = var.no_of_bits
   project = var.project
-  desired = var.desired
 }
 ######################################################################
 #SECTION - 2

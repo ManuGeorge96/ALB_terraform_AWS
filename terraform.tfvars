@@ -1,8 +1,8 @@
-region ="ap-south-1"
-access_key = "AKIA2CR7DPBBHJT3XCFJ"
-secret_key = "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"
+region ="us-east-1"
+access_key = "ENTER-ACCESS-ID"
+secret_key = "ENTER-SECRET-KEY"
 cidr_vpc = "172.69.0.0/16"
-project = "Applicate_Load_Balancer"
+project = "Application_Load_Balancer"
 type = "t2.micro"
 in_ports = [ "22", "80", "21" ]
 no_of_bits = "3"
