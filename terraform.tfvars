@@ -1,0 +1,11 @@
+region ="ap-south-1"
+access_key = "AKIA2CR7DPBBHJT3XCFJ"
+secret_key = "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"
+cidr_vpc = "172.69.0.0/16"
+project = "Applicate_Load_Balancer"
+type = "t2.micro"
+in_ports = [ "22", "80", "21" ]
+no_of_bits = "3"
+desired = "4"
+min = "2"
+max = "4"
