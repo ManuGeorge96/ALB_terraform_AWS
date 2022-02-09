@@ -155,7 +155,7 @@ It has got two main.tf files one in the root folder and other in the ./modules. 
         }
         depends_on = [ aws_lb.ALB ]
        }
-     ```  
+       ```  
    -  Creation of Listner.
    -  Port to which the Load Baancer should Listen.
 -  SECTION - 7
@@ -171,9 +171,9 @@ It has got two main.tf files one in the root folder and other in the ./modules. 
        host_header {
        values = ["ENTER-HOST-HEADER-HERE"]
        }
-      }
-      }
-      ```  
+        }
+        }
+      ```
    -  Creation of Listner Rules.
    -  Specify the Host Header here.   
 
