@@ -1,3 +1,5 @@
+[![Generic badge](https://img.shields.io/badge/BUILD-PASS-BLUE.svg)](https://shields.io/)
+
 # ALB_terraform_AWS
 
 ## What is Application Load Balancer?
